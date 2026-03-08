@@ -1,0 +1,16 @@
+.DS_Store
+**/__pycache__/
+*.pyc
+lab1/data/
+lab2/data/
+
+# Generated artifacts
+lab1/figs/
+lab1/output/
+output/
+lab2/code/checkpoints/*.ckpt
+lab2/results/**
+!lab2/results/
+!lab2/results/**/
+!lab2/results/**/*.md
+lab1/report/figs/

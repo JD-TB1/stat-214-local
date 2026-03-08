@@ -1,0 +1,427 @@
+(env_214) jayding@JaydeMacBook-Pro-376 Stat 214 % /opt/homebrew/Caskroom/miniforge
+/base/envs/env_214/bin/python "/Users/jayding/Desktop/DUKE/YY/歪歪长官的任务/Stat 
+214/stat-214-local/lab1/scripts/inspect_raw_data.py"
+================================================================================
+BASIC SHAPE
+================================================================================
+(43399, 125)
+
+
+COLUMN NAMES
+================================================================================
+['PatNum', 'EmplType', 'Certification', 'InjuryMech', 'High_impact_InjSev', 'Amnesia_verb', 'LOCSeparate', 'LocLen', 'Seiz', 'SeizOccur', 'SeizLen', 'ActNorm', 'HA_verb', 'HASeverity', 'HAStart', 'Vomit', 'VomitNbr', 'VomitStart', 'VomitLast', 'Dizzy', 'Intubated', 'Paralyzed', 'Sedated', 'GCSEye', 'GCSVerbal', 'GCSMotor', 'GCSTotal', 'GCSGroup', 'AMS', 'AMSAgitated', 'AMSSleep', 'AMSSlow', 'AMSRepeat', 'AMSOth', 'SFxPalp', 'SFxPalpDepress', 'FontBulg', 'SFxBas', 'SFxBasHem', 'SFxBasOto', 'SFxBasPer', 'SFxBasRet', 'SFxBasRhi', 'Hema', 'HemaLoc', 'HemaSize', 'Clav', 'ClavFace', 'ClavNeck', 'ClavFro', 'ClavOcc', 'ClavPar', 'ClavTem', 'NeuroD', 'NeuroDMotor', 'NeuroDSensory', 'NeuroDCranial', 'NeuroDReflex', 'NeuroDOth', 'OSI', 'OSIExtremity', 'OSICut', 'OSICspine', 'OSIFlank', 'OSIAbdomen', 'OSIPelvis', 'OSIOth', 'Drugs', 'CTForm1', 'IndAge', 'IndAmnesia', 'IndAMS', 'IndClinSFx', 'IndHA', 'IndHema', 'IndLOC', 'IndMech', 'IndNeuroD', 'IndRqstMD', 'IndRqstParent', 'IndRqstTrauma', 'IndSeiz', 'IndVomit', 'IndXraySFx', 'IndOth', 'CTSed', 'CTSedAgitate', 'CTSedAge', 'CTSedRqst', 'CTSedOth', 'AgeInMonth', 'AgeinYears', 'AgeTwoPlus', 'Gender', 'Ethnicity', 'Race', 'Observed', 'EDDisposition', 'CTDone', 'EDCT', 'PosCT', 'Finding1', 'Finding2', 'Finding3', 'Finding4', 'Finding5', 'Finding6', 'Finding7', 'Finding8', 'Finding9', 'Finding10', 'Finding11', 'Finding12', 'Finding13', 'Finding14', 'Finding20', 'Finding21', 'Finding22', 'Finding23', 'DeathTBI', 'HospHead', 'HospHeadPosCT', 'Intub24Head', 'Neurosurgery', 'PosIntFinal']
+
+
+MISSING VALUE SUMMARY (NA only)
+================================================================================
+Dizzy           15972
+Ethnicity       15966
+ActNorm          3335
+Race             3208
+LocLen           2556
+Observed         2376
+Amnesia_verb     2296
+LOCSeparate      1892
+Drugs            1818
+HAStart          1332
+GCSMotor         1310
+GCSVerbal        1298
+GCSEye           1288
+HASeverity       1044
+VomitLast         992
+CTSed             914
+Seiz              912
+HemaSize          742
+NeuroD            660
+HA_verb           652
+dtype: int64
+
+
+UNIQUE VALUE COUNTS (Top 30 columns)
+================================================================================
+
+--- PatNum ---
+PatNum
+1     1
+2     1
+3     1
+4     1
+5     1
+6     1
+7     1
+8     1
+9     1
+10    1
+Name: count, dtype: int64
+
+--- EmplType ---
+EmplType
+5.0    22216
+3.0    14333
+4.0     3807
+1.0     1974
+2.0     1051
+NaN       18
+Name: count, dtype: int64
+
+--- Certification ---
+Certification
+3     27298
+2     10215
+1      4904
+90      718
+4       264
+Name: count, dtype: int64
+
+--- InjuryMech ---
+InjuryMech
+8.0     11883
+6.0      4733
+1.0      3910
+90.0     3465
+12.0     3158
+11.0     3016
+10.0     2979
+9.0      2908
+7.0      2455
+4.0      1701
+Name: count, dtype: int64
+
+--- High_impact_InjSev ---
+High_impact_InjSev
+2.0    29268
+1.0     7188
+3.0     6609
+NaN      334
+Name: count, dtype: int64
+
+--- Amnesia_verb ---
+Amnesia_verb
+0.0     21751
+91.0    14805
+1.0      4547
+NaN      2296
+Name: count, dtype: int64
+
+--- LOCSeparate ---
+LOCSeparate
+0.0    34665
+1.0     4830
+2.0     2012
+NaN     1892
+Name: count, dtype: int64
+
+--- LocLen ---
+LocLen
+92.0    36557
+NaN      2556
+2.0      1867
+3.0      1133
+1.0       922
+4.0       364
+Name: count, dtype: int64
+
+--- Seiz ---
+Seiz
+0.0    41884
+NaN      912
+1.0      603
+Name: count, dtype: int64
+
+--- SeizOccur ---
+SeizOccur
+92.0    42796
+1.0       253
+2.0       210
+NaN        71
+3.0        69
+Name: count, dtype: int64
+
+--- SeizLen ---
+SeizLen
+92.0    42796
+1.0       259
+2.0       180
+NaN       117
+3.0        29
+4.0        18
+Name: count, dtype: int64
+
+--- ActNorm ---
+ActNorm
+1.0    33269
+0.0     6795
+NaN     3335
+Name: count, dtype: int64
+
+--- HA_verb ---
+HA_verb
+0.0     15881
+91.0    14060
+1.0     12806
+NaN       652
+Name: count, dtype: int64
+
+--- HASeverity ---
+HASeverity
+92.0    30593
+2.0      5671
+1.0      5266
+NaN      1044
+3.0       825
+Name: count, dtype: int64
+
+--- HAStart ---
+HAStart
+92.0    30593
+2.0     10584
+NaN      1332
+3.0       629
+4.0       173
+1.0        88
+Name: count, dtype: int64
+
+--- Vomit ---
+Vomit
+0.0    37152
+1.0     5804
+NaN      443
+Name: count, dtype: int64
+
+--- VomitNbr ---
+VomitNbr
+92.0    37595
+1.0      2189
+3.0      2173
+2.0      1145
+NaN       297
+Name: count, dtype: int64
+
+--- VomitStart ---
+VomitStart
+92.0    37595
+2.0      3114
+3.0      1592
+4.0       620
+NaN       413
+1.0        65
+Name: count, dtype: int64
+
+--- VomitLast ---
+VomitLast
+92.0    37595
+1.0      2762
+2.0      1712
+NaN       992
+3.0       338
+Name: count, dtype: int64
+
+--- Dizzy ---
+Dizzy
+0.0    24821
+NaN    15972
+1.0     2606
+Name: count, dtype: int64
+
+--- Intubated ---
+Intubated
+0.0    42856
+NaN      325
+1.0      218
+Name: count, dtype: int64
+
+--- Paralyzed ---
+Paralyzed
+0.0    42927
+NaN      336
+1.0      136
+Name: count, dtype: int64
+
+--- Sedated ---
+Sedated
+0.0    42846
+NaN      339
+1.0      214
+Name: count, dtype: int64
+
+--- GCSEye ---
+GCSEye
+4.0    41148
+NaN     1288
+3.0      506
+1.0      291
+2.0      166
+Name: count, dtype: int64
+
+--- GCSVerbal ---
+GCSVerbal
+5.0    40156
+4.0     1433
+NaN     1298
+1.0      303
+3.0      119
+2.0       90
+Name: count, dtype: int64
+
+--- GCSMotor ---
+GCSMotor
+6.0    41325
+NaN     1310
+5.0      382
+1.0      178
+4.0      154
+3.0       29
+2.0       21
+Name: count, dtype: int64
+
+--- GCSTotal ---
+GCSTotal
+15    41086
+14     1344
+13      305
+3       177
+12      102
+11       93
+9        61
+10       54
+6        49
+8        46
+Name: count, dtype: int64
+
+--- GCSGroup ---
+GCSGroup
+2    42430
+1      969
+Name: count, dtype: int64
+
+--- AMS ---
+AMS
+0.0    36618
+1.0     6465
+NaN      316
+Name: count, dtype: int64
+
+--- AMSAgitated ---
+AMSAgitated
+92    36934
+0      5486
+1       979
+Name: count, dtype: int64
+
+
+CHECK FOR SENTINEL CODES (90, 91, 92)
+================================================================================
+PatNum: 3 sentinel-coded entries
+Certification: 718 sentinel-coded entries
+InjuryMech: 3465 sentinel-coded entries
+Amnesia_verb: 14805 sentinel-coded entries
+LocLen: 36557 sentinel-coded entries
+SeizOccur: 42796 sentinel-coded entries
+SeizLen: 42796 sentinel-coded entries
+HA_verb: 14060 sentinel-coded entries
+HASeverity: 30593 sentinel-coded entries
+HAStart: 30593 sentinel-coded entries
+VomitNbr: 37595 sentinel-coded entries
+VomitStart: 37595 sentinel-coded entries
+VomitLast: 37595 sentinel-coded entries
+AMSAgitated: 36934 sentinel-coded entries
+AMSSleep: 36934 sentinel-coded entries
+AMSSlow: 36934 sentinel-coded entries
+AMSRepeat: 36934 sentinel-coded entries
+AMSOth: 36934 sentinel-coded entries
+SFxPalpDepress: 43175 sentinel-coded entries
+SFxBasHem: 43003 sentinel-coded entries
+SFxBasOto: 43003 sentinel-coded entries
+SFxBasPer: 43003 sentinel-coded entries
+SFxBasRet: 43003 sentinel-coded entries
+SFxBasRhi: 43003 sentinel-coded entries
+HemaLoc: 26261 sentinel-coded entries
+HemaSize: 26261 sentinel-coded entries
+ClavFace: 15581 sentinel-coded entries
+ClavNeck: 15581 sentinel-coded entries
+ClavFro: 15581 sentinel-coded entries
+ClavOcc: 15581 sentinel-coded entries
+ClavPar: 15581 sentinel-coded entries
+ClavTem: 15581 sentinel-coded entries
+NeuroDMotor: 42711 sentinel-coded entries
+NeuroDSensory: 42711 sentinel-coded entries
+NeuroDCranial: 42711 sentinel-coded entries
+NeuroDReflex: 42711 sentinel-coded entries
+NeuroDOth: 42711 sentinel-coded entries
+OSIExtremity: 38832 sentinel-coded entries
+OSICut: 38832 sentinel-coded entries
+OSICspine: 38832 sentinel-coded entries
+OSIFlank: 38832 sentinel-coded entries
+OSIAbdomen: 38832 sentinel-coded entries
+OSIPelvis: 38832 sentinel-coded entries
+OSIOth: 38832 sentinel-coded entries
+IndAge: 26474 sentinel-coded entries
+IndAmnesia: 26474 sentinel-coded entries
+IndAMS: 26474 sentinel-coded entries
+IndClinSFx: 26474 sentinel-coded entries
+IndHA: 26474 sentinel-coded entries
+IndHema: 26474 sentinel-coded entries
+IndLOC: 26474 sentinel-coded entries
+IndMech: 26474 sentinel-coded entries
+IndNeuroD: 26474 sentinel-coded entries
+IndRqstMD: 26474 sentinel-coded entries
+IndRqstParent: 26474 sentinel-coded entries
+IndRqstTrauma: 26474 sentinel-coded entries
+IndSeiz: 26474 sentinel-coded entries
+IndVomit: 26474 sentinel-coded entries
+IndXraySFx: 26474 sentinel-coded entries
+IndOth: 26474 sentinel-coded entries
+CTSed: 26474 sentinel-coded entries
+CTSedAgitate: 42745 sentinel-coded entries
+CTSedAge: 42745 sentinel-coded entries
+CTSedRqst: 42745 sentinel-coded entries
+CTSedOth: 42745 sentinel-coded entries
+AgeInMonth: 424 sentinel-coded entries
+Race: 1339 sentinel-coded entries
+EDDisposition: 248 sentinel-coded entries
+EDCT: 27500 sentinel-coded entries
+PosCT: 27500 sentinel-coded entries
+Finding1: 27500 sentinel-coded entries
+Finding2: 27500 sentinel-coded entries
+Finding3: 27500 sentinel-coded entries
+Finding4: 27500 sentinel-coded entries
+Finding5: 27500 sentinel-coded entries
+Finding6: 27500 sentinel-coded entries
+Finding7: 27500 sentinel-coded entries
+Finding8: 27500 sentinel-coded entries
+Finding9: 27500 sentinel-coded entries
+Finding10: 27500 sentinel-coded entries
+Finding11: 27500 sentinel-coded entries
+Finding12: 27500 sentinel-coded entries
+Finding13: 27500 sentinel-coded entries
+Finding14: 27500 sentinel-coded entries
+Finding20: 27500 sentinel-coded entries
+Finding21: 27500 sentinel-coded entries
+Finding22: 27500 sentinel-coded entries
+Finding23: 27500 sentinel-coded entries
+
+
+AGE CONSISTENCY CHECK
+================================================================================
+
+
+GCS CONSISTENCY CHECK
+================================================================================
+Number of GCS mismatches: 1344
+
+
+ciTBI PREVALENCE
+================================================================================
+PosIntFinal
+0.0    42616
+1.0      763
+NaN       20
+Name: count, dtype: int64
+
+
+CTDone vs PosCT cross-tab
+================================================================================
+PosCT      0     1      92
+CTDone                    
+0           0     0  27500
+1       14743  1156      0
