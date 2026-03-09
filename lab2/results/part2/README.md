@@ -4,13 +4,13 @@ This folder contains the Part 2 feature-engineering handoff for Lab 2. The goal 
 
 ## Files created in this pass
 ### Scripts
-- `code/part2_feature_engineering.py`
+- `code/part2/feature_engineering.py`
   - builds engineered predictors from the three labeled images
   - creates scalar contrasts and local 3x3 patch summaries
   - writes the main screening outputs below
-- `code/part2_autoencoder_features.py`
-  - uses `code/autoencoder.py` as the starting point for patch-based feature extraction
-  - loads `code/checkpoints/gsi-model.ckpt`
+- `code/part2/autoencoder_features.py`
+  - uses `code/original/autoencoder.py` as the starting point for patch-based feature extraction
+  - loads `code/original/checkpoints/gsi-model.ckpt`
   - extracts and screens latent embedding coordinates for supervised rows
 
 ### Main notes
@@ -44,14 +44,12 @@ Use the `env_214` Python directly.
 
 Classical engineered predictors:
 ```bash
-cd code
-/opt/homebrew/Caskroom/miniforge/base/envs/env_214/bin/python part2_feature_engineering.py
+/opt/homebrew/Caskroom/miniforge/base/envs/env_214/bin/python code/part2/feature_engineering.py
 ```
 
 Autoencoder-derived predictors:
 ```bash
-cd code
-/opt/homebrew/Caskroom/miniforge/base/envs/env_214/bin/python part2_autoencoder_features.py
+/opt/homebrew/Caskroom/miniforge/base/envs/env_214/bin/python code/part2/autoencoder_features.py
 ```
 
 ## What to reuse next

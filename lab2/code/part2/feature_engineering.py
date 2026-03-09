@@ -7,7 +7,7 @@ This script builds a meeting-ready list of candidate predictors from:
 - simple radiance aggregates / contrasts
 - local 3x3 neighborhood summaries
 
-Outputs (default: ../results/part2):
+Outputs (default: ../../results/part2):
 - labeled_engineered_features.csv
 - feature_screening.csv
 - predictor_catalog.md
@@ -34,8 +34,8 @@ LOCAL_BASE_COLS = ["NDAI", "SD", "CORR", "rad_mean", "rad_std"]
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Build Part 2 engineered predictors and screening tables")
-    parser.add_argument("--data_dir", type=str, default="../data/image_data")
-    parser.add_argument("--out_dir", type=str, default="../results/part2")
+    parser.add_argument("--data_dir", type=str, default="../../data/image_data")
+    parser.add_argument("--out_dir", type=str, default="../../results/part2")
     parser.add_argument("--local_window", type=int, default=3)
     return parser.parse_args()
 

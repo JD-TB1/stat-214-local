@@ -15,9 +15,9 @@ Generated artifacts (in ./results/eda by default):
 - summary.json
 
 Run examples:
-- python code/eda.py
-- python code/eda.py --max_points 50000 --seed 214 --out_dir results/eda
-- python -m code.eda --max_points 30000
+- python code/part1/eda.py
+- python code/part1/eda.py --max_points 50000 --seed 214 --out_dir results/eda
+- python -m code.part1.eda --max_points 30000
 """
 
 from __future__ import annotations
@@ -73,7 +73,7 @@ def log(msg: str) -> None:
 
 
 def resolve_paths(out_dir_arg: str) -> Tuple[Path, Path, Path]:
-    root = Path(__file__).resolve().parents[1]
+    root = Path(__file__).resolve().parents[2]
     data_dir = root / "data" / "image_data"
     out_dir = Path(out_dir_arg)
     if not out_dir.is_absolute():

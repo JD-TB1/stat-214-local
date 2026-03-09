@@ -7,14 +7,14 @@ This README summarizes the current Lab 2 pipeline status, scripts added in this 
 
 ## 1) Scripts added in this stage
 
-### `code/eda.py`
+### `code/part1/eda.py`
 Purpose:
 - Part 1 EDA for MISR labeled images (`O013257`, `O013490`, `O012791`).
 - Produces label maps, feature/radiance relationship plots, split diagnostics, quality diagnostics, and summary JSON.
 
 Run:
 ```bash
-python code/eda.py
+python code/part1/eda.py
 # or
 python -m code.eda --max_points 50000 --seed 214 --out_dir results/eda
 ```
@@ -37,7 +37,7 @@ Current result highlights (from `summary.json`):
 
 ---
 
-### `code/make_splits.py`
+### `code/part1/make_splits.py`
 Purpose:
 - Generate reproducible train/val/test files for two strategies:
 1. by-image holdout
@@ -45,7 +45,7 @@ Purpose:
 
 Run:
 ```bash
-python code/make_splits.py
+python code/part1/make_splits.py
 # or
 python -m code.make_splits --test_frac 0.2 --val_frac 0.2 --seed 214 --out_dir results/splits
 ```
@@ -62,7 +62,7 @@ Current status:
 
 ---
 
-### `code/clean_lab2.py`
+### `code/part1/clean_lab2.py`
 Purpose:
 - Minimal, conservative data cleaning (separate from EDA diagnostics).
 - Intended for pre-modeling dataset preparation.
@@ -79,7 +79,7 @@ Cleaning rules:
 
 Run:
 ```bash
-python code/clean_lab2.py
+python code/part1/clean_lab2.py
 # or
 python -m code.clean_lab2 --out_dir results/cleaning
 ```
@@ -120,11 +120,11 @@ Contains:
 ## 3) Recommended execution order from this point
 1. Run/refresh cleaning:
 ```bash
-python code/clean_lab2.py
+python code/part1/clean_lab2.py
 ```
 2. (Optional) regenerate splits if parameters change:
 ```bash
-python code/make_splits.py --test_frac 0.2 --val_frac 0.2 --seed 214
+python code/part1/make_splits.py --test_frac 0.2 --val_frac 0.2 --seed 214
 ```
 3. Use `results/cleaning/labeled_supervised_all.csv` + `results/splits/...` for Part 2/3 modeling.
 

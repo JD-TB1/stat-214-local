@@ -8,7 +8,7 @@ lab2/data/
 lab1/figs/
 lab1/output/
 output/
-lab2/code/checkpoints/*.ckpt
+lab2/code/original/checkpoints/*.ckpt
 lab2/results/**
 !lab2/results/
 !lab2/results/**/

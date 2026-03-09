@@ -8,12 +8,12 @@ This Part 2 pass was focused on building a concrete, shareable predictor shortli
 - patch-based autoencoder latent features derived from `code/autoencoder.py`
 
 ## 2. Scripts added for this pass
-- `code/part2_feature_engineering.py`
+- `code/part2/feature_engineering.py`
   - loads the 3 labeled images
   - creates engineered scalar and 3x3 neighborhood predictors
   - screens predictors with separation AUC, mutual information, and Cohen's d
   - writes `labeled_engineered_features.csv`, `feature_screening.csv`, and `predictor_catalog.md`
-- `code/part2_autoencoder_features.py`
+- `code/part2/autoencoder_features.py`
   - uses `code/autoencoder.py` plus `code/checkpoints/gsi-model.ckpt`
   - extracts latent embeddings for supervised pixels from 9x9 patches
   - writes `autoencoder_embeddings_supervised.csv`, `autoencoder_feature_screening.csv`, and `autoencoder_feature_notes.md`

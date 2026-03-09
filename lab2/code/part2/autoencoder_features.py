@@ -6,7 +6,7 @@ feature engineering. It builds 9x9 patches around supervised pixels, loads the
 existing checkpoint if available, extracts latent coordinates, and screens the
 embedding dimensions as candidate predictors.
 
-Outputs (default: ../results/part2):
+Outputs (default: ../../results/part2):
 - autoencoder_embeddings_supervised.csv
 - autoencoder_feature_screening.csv
 - autoencoder_feature_notes.md
@@ -24,7 +24,20 @@ import torch
 from sklearn.feature_selection import mutual_info_classif
 from sklearn.metrics import roc_auc_score
 
-from autoencoder import Autoencoder
+import importlib.util
+
+
+def load_autoencoder_class():
+    autoencoder_path = Path(__file__).resolve().parents[1] / "original" / "autoencoder.py"
+    spec = importlib.util.spec_from_file_location("lab2_original_autoencoder", autoencoder_path)
+    if spec is None or spec.loader is None:
+        raise ImportError(f"Could not load autoencoder from {autoencoder_path}")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module.Autoencoder
+
+
+Autoencoder = load_autoencoder_class()
 
 LABELED_IDS = ["O013257", "O013490", "O012791"]
 BASE_COLUMNS = ["y", "x", "NDAI", "SD", "CORR", "DF", "CF", "BF", "AF", "AN", "label"]
@@ -33,9 +46,9 @@ FEATURE_COLS = ["NDAI", "SD", "CORR", "DF", "CF", "BF", "AF", "AN"]
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Extract autoencoder features for supervised rows")
-    parser.add_argument("--data_dir", type=str, default="../data/image_data")
-    parser.add_argument("--out_dir", type=str, default="../results/part2")
-    parser.add_argument("--checkpoint", type=str, default="checkpoints/gsi-model.ckpt")
+    parser.add_argument("--data_dir", type=str, default="../../data/image_data")
+    parser.add_argument("--out_dir", type=str, default="../../results/part2")
+    parser.add_argument("--checkpoint", type=str, default="../original/checkpoints/gsi-model.ckpt")
     parser.add_argument("--patch_size", type=int, default=9)
     parser.add_argument("--embedding_size", type=int, default=8)
     parser.add_argument("--batch_size", type=int, default=2048)

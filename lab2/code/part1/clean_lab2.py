@@ -13,8 +13,8 @@ Default outputs (under ./results/cleaning):
 - cleaning_summary.json
 
 Run:
-- python code/clean_lab2.py
-- python -m code.clean_lab2 --out_dir results/cleaning
+- python code/part1/clean_lab2.py
+- python -m code.part1.clean_lab2 --out_dir results/cleaning
 """
 
 from __future__ import annotations
@@ -49,7 +49,7 @@ def parse_args() -> argparse.Namespace:
 
 
 def resolve_paths(out_dir_arg: str) -> Tuple[Path, Path, Path]:
-    root = Path(__file__).resolve().parents[1]
+    root = Path(__file__).resolve().parents[2]
     data_dir = root / "data" / "image_data"
     out_dir = Path(out_dir_arg)
     if not out_dir.is_absolute():
