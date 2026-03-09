@@ -1,14 +1,16 @@
 #!/usr/bin/env python3
 """Part 2 autoencoder-derived feature extraction for STAT 214 Lab 2.
 
-This script uses code/autoencoder.py as the starting point for patch-based
+This script uses code/original/autoencoder.py as the starting point for patch-based
 feature engineering. It builds 9x9 patches around supervised pixels, loads the
 existing checkpoint if available, extracts latent coordinates, and screens the
 embedding dimensions as candidate predictors.
 
-Outputs (default: ../../results/part2):
+Outputs:
+- results (default: `../../results/part2`)
 - autoencoder_embeddings_supervised.csv
 - autoencoder_feature_screening.csv
+- documentation (default: `../../documents/part2`)
 - autoencoder_feature_notes.md
 """
 
@@ -48,6 +50,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Extract autoencoder features for supervised rows")
     parser.add_argument("--data_dir", type=str, default="../../data/image_data")
     parser.add_argument("--out_dir", type=str, default="../../results/part2")
+    parser.add_argument("--docs_dir", type=str, default="../../documents/part2")
     parser.add_argument("--checkpoint", type=str, default="../original/checkpoints/gsi-model.ckpt")
     parser.add_argument("--patch_size", type=int, default=9)
     parser.add_argument("--embedding_size", type=int, default=8)
@@ -199,8 +202,10 @@ def main() -> None:
     script_dir = Path(__file__).resolve().parent
     data_dir = resolve_path(script_dir, args.data_dir)
     out_dir = resolve_path(script_dir, args.out_dir)
+    docs_dir = resolve_path(script_dir, args.docs_dir)
     checkpoint = resolve_path(script_dir, args.checkpoint)
     out_dir.mkdir(parents=True, exist_ok=True)
+    docs_dir.mkdir(parents=True, exist_ok=True)
 
     images = load_images(data_dir)
     means, stds = compute_channel_norm(images)
@@ -237,11 +242,11 @@ def main() -> None:
 
     out_df.to_csv(out_dir / "autoencoder_embeddings_supervised.csv", index=False)
     ranked.to_csv(out_dir / "autoencoder_feature_screening.csv", index=False)
-    write_notes(out_dir / "autoencoder_feature_notes.md", ranked, checkpoint)
+    write_notes(docs_dir / "autoencoder_feature_notes.md", ranked, checkpoint)
 
     print(f"[part2-ae] wrote {out_dir / 'autoencoder_embeddings_supervised.csv'}")
     print(f"[part2-ae] wrote {out_dir / 'autoencoder_feature_screening.csv'}")
-    print(f"[part2-ae] wrote {out_dir / 'autoencoder_feature_notes.md'}")
+    print(f"[part2-ae] wrote {docs_dir / 'autoencoder_feature_notes.md'}")
 
 
 if __name__ == "__main__":

@@ -14,12 +14,12 @@ This folder contains the Part 2 feature-engineering handoff for Lab 2. The goal 
   - extracts and screens latent embedding coordinates for supervised rows
 
 ### Main notes
-- `results/part2/meeting_summary.md`
+- `documents/part2/meeting_summary.md`
   - short summary for discussion
   - includes recommended predictor shortlist and suggested Part 2 methods
-- `results/part2/predictor_catalog.md`
+- `documents/part2/predictor_catalog.md`
   - screening-based list of the strongest expert, radiance, engineered, and patch-local predictors
-- `results/part2/autoencoder_feature_notes.md`
+- `documents/part2/autoencoder_feature_notes.md`
   - screening-based list of the strongest latent embedding dimensions
 
 ### Data outputs
@@ -33,9 +33,9 @@ This folder contains the Part 2 feature-engineering handoff for Lab 2. The goal 
   - ranking table for autoencoder latent dimensions
 
 ## Recommended reading order
-1. `results/part2/meeting_summary.md`
-2. `results/part2/predictor_catalog.md`
-3. `results/part2/autoencoder_feature_notes.md`
+1. `documents/part2/meeting_summary.md`
+2. `documents/part2/predictor_catalog.md`
+3. `documents/part2/autoencoder_feature_notes.md`
 4. `results/part2/feature_screening.csv`
 5. `results/part2/autoencoder_feature_screening.csv`
 

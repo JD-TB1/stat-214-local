@@ -1,5 +1,5 @@
 # EXAMPLE USAGE:
-# python run_autoencoder.py configs/default.yaml
+# python code/original/run_autoencoder.py code/original/configs/default.yaml
 
 import numpy as np
 import sys

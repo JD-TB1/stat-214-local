@@ -1,7 +1,8 @@
 # EXAMPLE USAGE:
-# python get_embedding.py configs/default.yaml checkpoints/default-epoch=009.ckpt
+# python code/original/get_embedding.py code/original/configs/default.yaml results/part2/autoencoder/checkpoints/default-epoch=009.ckpt
 
 import sys
+from pathlib import Path
 import torch
 import pandas as pd
 import numpy as np
@@ -68,6 +69,8 @@ for i in tqdm(range(len(images_long))):
     images_embedded.append(img_embedded)
 
 print("Saving the embeddings")
+out_dir = Path(__file__).resolve().parents[2] / "results" / "part2" / "autoencoder_embeddings"
+out_dir.mkdir(parents=True, exist_ok=True)
 # save the embeddings as csv
 for i in tqdm(range(len(images_long))):
     embedding_df = pd.DataFrame(embeddings[i], columns=[f"ae{i}" for i in range(8)])
@@ -78,7 +81,7 @@ for i in tqdm(range(len(images_long))):
     cols = cols[-2:] + cols[:-2]
     embedding_df = embedding_df[cols]
     # save to csv
-    embedding_df.to_csv(f"../data/image{i+1}_ae.csv", index=False)
+    embedding_df.to_csv(out_dir / f"image{i+1}_ae.csv", index=False)
 
 
 # here is some code to take a look at the embeddings.

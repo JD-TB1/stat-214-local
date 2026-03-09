@@ -1,4 +1,4 @@
-import glob
+from pathlib import Path
 import numpy as np
 
 
@@ -13,7 +13,8 @@ def make_data(patch_size=9):
     """
 
     # load images
-    filepaths = glob.glob("../data/*.npz")
+    data_dir = Path(__file__).resolve().parents[2] / "data" / "image_data"
+    filepaths = sorted(str(path) for path in data_dir.glob("*.npz"))
     images_long = []
     for fp in filepaths:
         npz_data = np.load(fp)

@@ -1,9 +1,9 @@
 # Autoencoder Feature Notes
 
-Checkpoint used: `/Users/jayding/Desktop/DUKE/YY/歪歪长官的任务/Stat 214/stat-214-local/lab2/code/checkpoints/gsi-model.ckpt`
+Checkpoint used: `/Users/jayding/Desktop/DUKE/YY/歪歪长官的任务/Stat 214/stat-214-local/lab2/code/original/checkpoints/gsi-model.ckpt`
 
 ## What this script does
-- Reuses the patch-based autoencoder architecture from `code/autoencoder.py`.
+- Reuses the patch-based autoencoder architecture from `code/original/autoencoder.py`.
 - Builds 9x9 patches around supervised pixels from the eight raw MISR channels/features.
 - Screens each latent coordinate as a candidate Part 2 predictor.
 

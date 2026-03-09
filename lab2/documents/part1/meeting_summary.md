@@ -1,14 +1,14 @@
 # STAT 214 Lab 2 Part 1 (EDA) - Meeting Summary
 
 ## 1) Sufficiency decision
-**Decision: YES, current `code/eda.py` is sufficient for Part 1 EDA**, with two minor caveats to mention in the meeting/report:
+**Decision: YES, current `code/part1/eda.py` is sufficient for Part 1 EDA**, with two minor caveats to mention in the meeting/report:
 - You still need to **state your final chosen split protocol** for downstream modeling (the script provides diagnostics for two strong options).
 - The `CORR` range check may be too strict for this dataset representation; verify definition/scaling before final cleaning rules.
 
 ## 1.1 Cleaning status update
 - In the original EDA, cleaning was mostly **diagnostic** (quality checks + excluding non-finite rows in plotting/stat summaries).
 - We now added a dedicated minimal-cleaning script:
-  - `code/clean_lab2.py`
+  - `code/part1/clean_lab2.py`
 - It performs conservative cleaning aligned with lab expectations:
   - keep only valid labels in `{-1, 0, +1}`
   - remove non-finite rows across required columns
@@ -18,11 +18,11 @@
     - `SD >= 0`, radiances `>= 0`
   - drop duplicate `(image_id, x, y)` rows if present
 - Outputs from cleaning run (when executed):
-  - `results/cleaning/labeled_cleaned_<image_id>.csv`
-  - `results/cleaning/labeled_cleaned_all.csv`
-  - `results/cleaning/labeled_supervised_all.csv`
-  - `results/cleaning/cleaning_report.csv`
-  - `results/cleaning/cleaning_summary.json`
+  - `results/part1/cleaning/labeled_cleaned_<image_id>.csv`
+  - `results/part1/cleaning/labeled_cleaned_all.csv`
+  - `results/part1/cleaning/labeled_supervised_all.csv`
+  - `results/part1/cleaning/cleaning_report.csv`
+  - `results/part1/cleaning/cleaning_summary.json`
 
 ## 2) Requirement checklist vs. outputs
 Part 1 instruction items from `lab2-instructions.tex`:
@@ -38,13 +38,13 @@ Part 1 instruction items from `lab2-instructions.tex`:
 
 3. Split into train/val/test (or train/test + CV) and justify future-use realism.
 - Done as diagnostics/proposal.
-- Files: `split_diagnostics.csv`, `split_notes.md`.
+- Files: `results/part1/eda/split_diagnostics.csv`, `documents/part1/split_notes.md`.
 - Includes by-image and spatial holdout analyses, and distribution-shift metrics.
 
 4. Identify/handle real-world data imperfections.
 - Done at EDA level (diagnostic + recommendations).
-- File: `data_quality_report.csv`.
-- Cleaning recommendations documented in `split_notes.md`.
+- File: `results/part1/eda/data_quality_report.csv`.
+- Cleaning recommendations documented in `documents/part1/split_notes.md`.
 
 ## 3) Key EDA observations to present
 

@@ -5,7 +5,7 @@ This Part 2 pass was focused on building a concrete, shareable predictor shortli
 - expert features from the lab/paper: `NDAI`, `SD`, `CORR`
 - raw multi-angle radiances: `DF`, `CF`, `BF`, `AF`, `AN`
 - hand-engineered scalar combinations and contrasts
-- patch-based autoencoder latent features derived from `code/autoencoder.py`
+- patch-based autoencoder latent features derived from `code/original/autoencoder.py`
 
 ## 2. Scripts added for this pass
 - `code/part2/feature_engineering.py`
@@ -14,7 +14,7 @@ This Part 2 pass was focused on building a concrete, shareable predictor shortli
   - screens predictors with separation AUC, mutual information, and Cohen's d
   - writes `labeled_engineered_features.csv`, `feature_screening.csv`, and `predictor_catalog.md`
 - `code/part2/autoencoder_features.py`
-  - uses `code/autoencoder.py` plus `code/checkpoints/gsi-model.ckpt`
+  - uses `code/original/autoencoder.py` plus `code/original/checkpoints/gsi-model.ckpt`
   - extracts latent embeddings for supervised pixels from 9x9 patches
   - writes `autoencoder_embeddings_supervised.csv`, `autoencoder_feature_screening.csv`, and `autoencoder_feature_notes.md`
 
@@ -108,7 +108,7 @@ If the meeting needs a short list instead of the full catalog, discuss these fir
 - `CORR` underperformed here, but could still matter in multivariate models or local summaries.
 
 ## 7. Files to open during the meeting
-- `results/part2/predictor_catalog.md`
+- `documents/part2/predictor_catalog.md`
 - `results/part2/feature_screening.csv`
-- `results/part2/autoencoder_feature_notes.md`
+- `documents/part2/autoencoder_feature_notes.md`
 - `results/part2/autoencoder_feature_screening.csv`

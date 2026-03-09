@@ -5,7 +5,7 @@ Purpose:
 - Apply conservative, domain-aligned cleaning before modeling.
 - Keep cleaning transparent and reversible.
 
-Default outputs (under ./results/cleaning):
+Default outputs (under `results/part1/cleaning`):
 - labeled_cleaned_all.csv
 - labeled_cleaned_<image_id>.csv
 - labeled_supervised_all.csv  (label in {-1, +1})
@@ -14,7 +14,7 @@ Default outputs (under ./results/cleaning):
 
 Run:
 - python code/part1/clean_lab2.py
-- python -m code.part1.clean_lab2 --out_dir results/cleaning
+- python -m code.part1.clean_lab2 --out_dir results/part1/cleaning
 """
 
 from __future__ import annotations
@@ -42,7 +42,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--out_dir",
         type=str,
-        default="results/cleaning",
+        default="results/part1/cleaning",
         help="Output directory relative to lab2 root unless absolute",
     )
     return parser.parse_args()

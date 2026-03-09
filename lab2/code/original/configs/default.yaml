@@ -23,7 +23,7 @@ checkpoint:
   filename: 'default-{epoch:03d}'
     # you should change "default" to something else
     # for your experiments
-  dirpath: 'checkpoints'
+  dirpath: 'results/part2/autoencoder/checkpoints'
 wandb:
   project: 'lab2-autoencoder'
   name: 'default'

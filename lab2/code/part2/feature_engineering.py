@@ -7,9 +7,11 @@ This script builds a meeting-ready list of candidate predictors from:
 - simple radiance aggregates / contrasts
 - local 3x3 neighborhood summaries
 
-Outputs (default: ../../results/part2):
+Outputs:
+- results (default: `../../results/part2`)
 - labeled_engineered_features.csv
 - feature_screening.csv
+- documentation (default: `../../documents/part2`)
 - predictor_catalog.md
 """
 
@@ -36,6 +38,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Build Part 2 engineered predictors and screening tables")
     parser.add_argument("--data_dir", type=str, default="../../data/image_data")
     parser.add_argument("--out_dir", type=str, default="../../results/part2")
+    parser.add_argument("--docs_dir", type=str, default="../../documents/part2")
     parser.add_argument("--local_window", type=int, default=3)
     return parser.parse_args()
 
@@ -249,7 +252,9 @@ def main() -> None:
     script_dir = Path(__file__).resolve().parent
     data_dir = resolve_path(script_dir, args.data_dir)
     out_dir = resolve_path(script_dir, args.out_dir)
+    docs_dir = resolve_path(script_dir, args.docs_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
+    docs_dir.mkdir(parents=True, exist_ok=True)
 
     df = load_labeled_images(data_dir)
     df = add_pointwise_features(df)
@@ -260,11 +265,11 @@ def main() -> None:
 
     df.to_csv(out_dir / "labeled_engineered_features.csv", index=False)
     ranked.to_csv(out_dir / "feature_screening.csv", index=False)
-    write_catalog(out_dir / "predictor_catalog.md", ranked)
+    write_catalog(docs_dir / "predictor_catalog.md", ranked)
 
     print(f"[part2] wrote {out_dir / 'labeled_engineered_features.csv'}")
     print(f"[part2] wrote {out_dir / 'feature_screening.csv'}")
-    print(f"[part2] wrote {out_dir / 'predictor_catalog.md'}")
+    print(f"[part2] wrote {docs_dir / 'predictor_catalog.md'}")
 
 
 if __name__ == "__main__":

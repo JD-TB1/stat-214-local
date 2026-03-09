@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """STAT 214 Lab 2 - Part 1 EDA for MISR cloud detection.
 
-Generated artifacts (in ./results/eda by default):
+Generated artifacts (results in `results/part1/eda`, notes in `documents/part1` by default):
 - label_map_<image_id>.png
 - label_map_labeled_only_<image_id>.png
 - radiance_corr_<scope>.png
@@ -11,12 +11,11 @@ Generated artifacts (in ./results/eda by default):
 - feature_ranking.csv  (pooled alias)
 - split_diagnostics.csv
 - data_quality_report.csv
-- split_notes.md
 - summary.json
 
 Run examples:
 - python code/part1/eda.py
-- python code/part1/eda.py --max_points 50000 --seed 214 --out_dir results/eda
+- python code/part1/eda.py --max_points 50000 --seed 214 --out_dir results/part1/eda --docs_dir documents/part1
 - python -m code.part1.eda --max_points 30000
 """
 
@@ -513,9 +512,13 @@ A random pixel split leaks spatially adjacent pixels from the same cloud structu
     out_path.write_text(text, encoding="utf-8")
 
 
-def run_eda(max_points: int, seed: int, out_dir_arg: str) -> None:
+def run_eda(max_points: int, seed: int, out_dir_arg: str, docs_dir_arg: str) -> None:
     np.random.seed(seed)
     root, data_dir, out_dir = resolve_paths(out_dir_arg)
+    docs_dir = Path(docs_dir_arg)
+    if not docs_dir.is_absolute():
+        docs_dir = root / docs_dir
+    docs_dir.mkdir(parents=True, exist_ok=True)
 
     helper_name = discover_helper_loader()
     if helper_name == "make_data":
@@ -590,7 +593,7 @@ def run_eda(max_points: int, seed: int, out_dir_arg: str) -> None:
     labeled_for_split = {k: v[v["label"].isin([-1, 1])].copy() for k, v in labeled_map.items()}
     split_df = split_diagnostics(labeled_for_split)
     split_df.to_csv(out_dir / "split_diagnostics.csv", index=False)
-    write_split_notes(out_dir / "split_notes.md")
+    write_split_notes(docs_dir / "split_notes.md")
 
     split_summary = (
         split_df.groupby(["strategy", "split_id"], as_index=False)["abs_standardized_mean_diff"].mean().sort_values("abs_standardized_mean_diff", ascending=False)
@@ -617,10 +620,11 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="STAT 214 Lab 2 Part 1 EDA (MISR cloud detection)")
     parser.add_argument("--max_points", type=int, default=50000, help="Max sampled points for heavy plots")
     parser.add_argument("--seed", type=int, default=214, help="Random seed for deterministic sampling")
-    parser.add_argument("--out_dir", type=str, default="results/eda", help="Output directory relative to lab2 root unless absolute")
+    parser.add_argument("--out_dir", type=str, default="results/part1/eda", help="Output directory relative to lab2 root unless absolute")
+    parser.add_argument("--docs_dir", type=str, default="documents/part1", help="Documentation directory relative to lab2 root unless absolute")
     return parser.parse_args()
 
 
 if __name__ == "__main__":
     args = parse_args()
-    run_eda(max_points=args.max_points, seed=args.seed, out_dir_arg=args.out_dir)
+    run_eda(max_points=args.max_points, seed=args.seed, out_dir_arg=args.out_dir, docs_dir_arg=args.docs_dir)

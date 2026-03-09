@@ -1,16 +1,15 @@
 #!/usr/bin/env python3
 """Generate deterministic train/val/test splits for STAT 214 Lab 2.
 
-Artifacts (default output root: ./results/splits):
+Artifacts (default output root: `results/part1/splits`, notes in `documents/part1`):
 - by_image/holdout_<image_id>/{train,val,test}.csv
 - spatial_within_image/<image_id>_x_gt_qXX/{train,val,test}.csv
 - split_manifest.csv
 - split_manifest.json
-- split_justification.md
 
 Run examples:
 - python code/part1/make_splits.py
-- python -m code.part1.make_splits --test_frac 0.2 --val_frac 0.2
+- python -m code.part1.make_splits --test_frac 0.2 --val_frac 0.2 --out_dir results/part1/splits --docs_dir documents/part1
 """
 
 from __future__ import annotations
@@ -53,7 +52,8 @@ def parse_args() -> argparse.Namespace:
         help="Fraction for validation holdout from pre-test pool by x-coordinate",
     )
     parser.add_argument("--seed", type=int, default=214, help="Seed kept for reproducibility bookkeeping")
-    parser.add_argument("--out_dir", type=str, default="results/splits", help="Output directory (relative to lab2 root unless absolute)")
+    parser.add_argument("--out_dir", type=str, default="results/part1/splits", help="Output directory (relative to lab2 root unless absolute)")
+    parser.add_argument("--docs_dir", type=str, default="documents/part1", help="Documentation directory relative to lab2 root unless absolute")
     return parser.parse_args()
 
 
@@ -194,6 +194,10 @@ def run() -> None:
     args = parse_args()
     np.random.seed(args.seed)
     root, data_dir, out_dir = resolve_paths(args.out_dir)
+    docs_dir = Path(args.docs_dir)
+    if not docs_dir.is_absolute():
+        docs_dir = root / docs_dir
+    docs_dir.mkdir(parents=True, exist_ok=True)
     log(f"root={root}")
     log(f"data_dir={data_dir}")
     log(f"out_dir={out_dir}")
@@ -282,7 +286,7 @@ def run() -> None:
     manifest_json = out_dir / "split_manifest.json"
     manifest_json.write_text(json.dumps(manifest_rows, indent=2), encoding="utf-8")
 
-    write_justification(out_dir / "split_justification.md", test_frac=args.test_frac, val_frac=args.val_frac)
+    write_justification(docs_dir / "split_justification.md", test_frac=args.test_frac, val_frac=args.val_frac)
     log(f"Done. Manifest: {manifest_csv}")
 
 
