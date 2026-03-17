@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 
 LAB1_DIR = Path(__file__).resolve().parents[1]
 INFILE = LAB1_DIR / "output" / "cleaned_rule_cohort.csv"
-FIG_DIR = LAB1_DIR / "figs"
+FIG_DIR = LAB1_DIR / "output" / "figures"
 FIG_DIR.mkdir(parents=True, exist_ok=True)
 
 
@@ -59,4 +59,4 @@ plt.tight_layout()
 plt.savefig(FIG_DIR / "stability_age_bins.png", dpi=300)
 plt.close()
 
-print("Stability figure written to figs/stability_age_bins.png")
+print("Stability figure written to output/figures/stability_age_bins.png")

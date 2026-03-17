@@ -43,11 +43,14 @@ import pandas as pd
 # -----------------------------
 # Config
 # -----------------------------
-DATA_PATH = Path(
-    "/Users/jayding/Desktop/DUKE/YY/歪歪长官的任务/Stat 214/stat-214-gsi/lab1/data/TBI PUD 10-08-2013.csv"
-)
+LAB1_DIR = Path(__file__).resolve().parents[1]
+REPO_ROOT = LAB1_DIR.parent
+SHARED_ROOT = REPO_ROOT.parent
+LOCAL_DATA_PATH = LAB1_DIR / "data" / "TBI PUD 10-08-2013.csv"
+GSI_DATA_PATH = SHARED_ROOT / "stat-214-gsi" / "lab1" / "data" / "TBI PUD 10-08-2013.csv"
+DATA_PATH = LOCAL_DATA_PATH if LOCAL_DATA_PATH.exists() else GSI_DATA_PATH
 
-OUT_DIR = Path("/Users/jayding/Desktop/DUKE/YY/歪歪长官的任务/Stat 214/stat-214-local/output/inspect_raw")
+OUT_DIR = LAB1_DIR / "output" / "inspect_raw"
 TOPK = 15  # top categories shown per column
 SENTINELS = [90, 91, 92]  # common codes in documentation: Other, Preverbal/Nonverbal, Not applicable
 ENCODING = "utf-8"

@@ -1,0 +1,4 @@
+family,block_name,mean_test_roc_auc,mean_test_pr_auc,mean_test_balanced_accuracy
+hist_gradient_boosting,B0_base,0.9216511160754584,0.8344215449702066,0.8686780465352734
+hist_gradient_boosting,B2_context,0.9400912467458733,0.8716578126926694,0.8834694227873597
+hist_gradient_boosting,B3_context_ae,0.9542561749180702,0.9051723394570388,0.9003448215717725
