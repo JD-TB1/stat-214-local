@@ -1022,6 +1022,21 @@ Search mode used for this run: `{search_mode}`.
 - mean outer-test PR AUC: `{best_pr:.4f}`
 - mean outer-test balanced accuracy: `{best_bacc:.4f}`
 
+## How to interpret the current results
+- Treat these as strong preliminary results from the current `{search_mode}` search, not as the final exhaustive tuning run.
+- The leading combination is `{best_family} + {best_block}`, which suggests the best current performance comes from combining expert features, engineered features, local spatial context, and the selected autoencoder features.
+- The step from `B2_context` to `B3_context_ae` is meaningful.
+  - For HistGradientBoosting, mean outer-test ROC AUC improved from `0.9401` to `0.9543`, and mean PR AUC improved from `0.8717` to `0.9052`.
+  - That is evidence that the selected AE dimensions are adding useful signal beyond the hand-engineered/context block.
+- The results are not equally easy across all held-out images.
+  - The best model is very strong on `O013257` and `O013490`, but weaker on `O012791`.
+  - That means the average performance is good, but we should still inspect the per-image error maps and diagnostics rather than relying on a single mean score.
+- Read the metrics in roles:
+  - ROC AUC is the main ranking metric across model/block combinations.
+  - PR AUC helps judge positive-class retrieval quality.
+  - Balanced accuracy reflects the thresholded classification behavior after threshold selection on validation data.
+- Practical conclusion: the current pipeline is working and the AE-enhanced context block is promising, but the final reported model should still be confirmed with a `full` search rerun.
+
 ## Integrity checks
 - supervised rows: `{feature_integrity['n_rows']}`
 - duplicate supervised keys: `{feature_integrity['duplicate_key_rows']}`
