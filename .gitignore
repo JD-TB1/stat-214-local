@@ -21,4 +21,23 @@ lab2/results/**
 !lab2/results/part3/**/*.joblib
 lab2/results/part3/predictions/**
 lab2/results/part3/unlabeled_predictions/*/pixel_predictions.csv
+
+# Isolated merged pipeline artifacts
+lab2/isolated_merged/results/**
+!lab2/isolated_merged/results/
+!lab2/isolated_merged/results/**/
+!lab2/isolated_merged/results/part1/eda/**/*.png
+!lab2/isolated_merged/results/part1/splits/**/*.csv
+!lab2/isolated_merged/results/part1/splits/**/*.json
+!lab2/isolated_merged/results/part2/feature_screening.csv
+!lab2/isolated_merged/results/part2/autoencoder_feature_screening.csv
+!lab2/isolated_merged/results/part3/**/*.csv
+!lab2/isolated_merged/results/part3/**/*.json
+!lab2/isolated_merged/results/part3/**/*.png
+!lab2/isolated_merged/results/part3/**/*.joblib
+lab2/isolated_merged/results/part2/labeled_engineered_features.csv
+lab2/isolated_merged/results/part2/autoencoder_embeddings_supervised.csv
+lab2/isolated_merged/results/part3/predictions/**
+lab2/isolated_merged/results/part3/unlabeled_predictions/*/pixel_predictions.csv
+
 lab1/report/figs/

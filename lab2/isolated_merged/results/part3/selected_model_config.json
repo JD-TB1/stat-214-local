@@ -1,0 +1,32 @@
+{
+  "block_name": "B3_context_ae",
+  "family": "hist_gradient_boosting",
+  "family_label": "HistGradientBoosting",
+  "feature_names": [
+    "SD",
+    "NDAI",
+    "AF",
+    "AN",
+    "BF",
+    "ndai_x_sd",
+    "af_df_gap",
+    "front_back_ratio",
+    "rad_cv",
+    "rad_range",
+    "local_SD_mean3",
+    "local_NDAI_std3",
+    "local_SD_std3",
+    "local_rad_std_std3",
+    "local_rad_mean_std3",
+    "ae4",
+    "ae5",
+    "ae0"
+  ],
+  "params": {
+    "l2_regularization": 0.0,
+    "learning_rate": 0.1,
+    "max_depth": null,
+    "min_samples_leaf": 100
+  },
+  "threshold": 0.29864017497881273
+}
